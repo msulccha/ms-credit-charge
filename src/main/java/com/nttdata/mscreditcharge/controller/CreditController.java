@@ -37,7 +37,7 @@ public class CreditController {
                 .flatMap(cc -> creditService.findCountCreditCardId(cc.getId())
                                 .filter(count -> {
                                     // VERIFICAR CANTIDAD DE CREDITOS PERMITIDOS
-                                    switch (cc.getCustomer().getTypeCustomer().getValue()){
+                                    switch (cc.getCustomer().getTypeCustomer()){
                                         case PERSONAL: return count < 1;
                                         case EMPRESARIAL: return true;
                                         default: return false;
